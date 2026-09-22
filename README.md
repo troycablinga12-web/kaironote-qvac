@@ -1,47 +1,48 @@
-# LocalStudyLab
+# KairoNote
 
-A small private study coach powered by **Tether QVAC**. Ask a study question and get a short explanation, example, quiz, or common-mistake check. The QVAC language model runs locally on the same machine as the app.
+KairoNote is a private AI study companion powered by Tether QVAC.
 
-## Why it is different
+It helps students understand lessons through simple explanations, examples, quizzes, and common-mistake guidance. AI inference runs locally on the user's machine using the QVAC SDK.
 
-LocalStudyLab is designed for students who may want to paste their own class notes or questions into an AI tool without sending them to a remote AI API. This demo keeps inference local and needs no API key.
+## Features
 
-## QVAC requirement
+- Explain difficult topics in simple English
+- Generate examples
+- Quiz the student
+- Identify common mistakes
+- On-device AI inference
+- No API key required
+- No cloud AI calls
+- Simple browser-based interface
 
-- SDK: `@qvac/sdk` **0.19.1**
-- QVAC functions used: `loadModel()` and `completion()`
-- Model: `LLAMA_3_2_1B_INST_Q4_0`
+## Built With
 
-QVAC 0.19.x runs models locally; delegated/provider inference was removed in 0.19.0.
+- Node.js
+- JavaScript
+- HTML/CSS
+- Tether QVAC SDK
+- `@qvac/sdk` version `0.19.1`
 
-## Requirements
+## How It Works
 
-- Node.js 22.17+ recommended
-- npm 10.9+
-- A machine supported by QVAC with enough memory for the model
+The browser sends the student's question to the local Node.js server.
 
-## Install
+The server uses QVAC to load the local AI model and generate the response.
 
-```bash
-npm install
-```
+```text
+Student
+   ↓
+KairoNote Web Interface
+   ↓
+Local Node.js Server
+   ↓
+Tether QVAC
+   ↓
+Local AI Model
+   ↓
+AI Response
+## Development Notes
 
-## Run
+KairoNote was developed as an original student-focused project to demonstrate practical on-device AI.
 
-```bash
-npm start
-```
-
-Open **http://localhost:3000** in your browser. The first run downloads the model; later runs can reuse the local model cache.
-
-## How it works
-
-The browser sends the question only to the local Node.js app at `localhost`. The Node process calls QVAC's `loadModel()` once, then uses `completion()` for each question. There is no external AI API in this app.
-
-## Open source
-
-MIT License. See `LICENSE`.
-
-## Credits
-
-Built with the open-source QVAC SDK by Tether: https://github.com/tetherto/qvac
+The application keeps the AI inference process on the user's machine and provides a simple interface designed for everyday studying.
