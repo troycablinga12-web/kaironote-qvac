@@ -1,101 +1,2593 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KairoNote — Private AI Study Companion</title>
+  <title>KairoNote — Engineering Study Lab</title>
   <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
-  <main class="container">
-    <section class="hero">
-      <span class="badge">● 100% local inference</span>
-      <h1>KairoNote</h1>
-      <p>
-        A private AI study companion for quick explanations, examples,
-        quizzes, and common mistakes — powered by QVAC on your own machine.
-      </p>
-    </section>
 
-    <section class="card">
-      <label for="question">What are you studying?</label>
+<div class="app">
 
-      <textarea
-        id="question"
-        rows="5"
-        placeholder="Example: Explain Newton's Second Law in simple words."
-      ></textarea>
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
 
-      <div class="controls">
-        <select id="mode">
-          <option value="explain">Explain it</option>
-          <option value="example">Give me an example</option>
-          <option value="quiz">Quiz me</option>
-          <option value="mistake">Find my common mistake</option>
-        </select>
+  <aside class="sidebar">
 
-        <button id="ask">Ask KairoNote</button>
+    <div class="brand">
+      <div class="brand-icon">K</div>
+
+      <div>
+        <h2>KairoNote</h2>
+        <span>Engineering Study Lab</span>
+      </div>
+    </div>
+
+    <div class="local-status">
+      <span class="status-dot"></span>
+      QVAC running locally
+    </div>
+
+    <div class="sidebar-title">SUBJECTS</div>
+
+    <nav class="subjects">
+
+      <button class="subject active" data-subject="General Engineering">
+        <span>⌂</span>
+        General Engineering
+      </button>
+
+      <button class="subject" data-subject="Statics & Mechanics">
+        <span>⚖</span>
+        Statics & Mechanics
+      </button>
+
+      <button class="subject" data-subject="Mathematics & Calculus">
+        <span>∑</span>
+        Mathematics & Calculus
+      </button>
+
+      <button class="subject" data-subject="Surveying">
+        <span>⌖</span>
+        Surveying
+      </button>
+
+      <button class="subject" data-subject="Structural Engineering">
+        <span>▥</span>
+        Structural Engineering
+      </button>
+
+      <button class="subject" data-subject="Hydraulics">
+        <span>≋</span>
+        Hydraulics
+      </button>
+
+      <button class="subject" data-subject="Building Utilities">
+        <span>⌂</span>
+        Building Utilities
+      </button>
+
+      <button class="subject" data-subject="Engineering Economics">
+        <span>₱</span>
+        Engineering Economics
+      </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="private-box">
+        <strong>🔒 Private AI</strong>
+        <p>Your AI questions stay on this device.</p>
       </div>
 
-      <div id="status"></div>
+    </div>
 
-      <section class="output">
-        <h2>AI OUTPUT</h2>
-        <pre id="output">Your local AI answer will appear here.</pre>
-      </section>
+  </aside>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="main">
+
+    <div class="topbar">
+
+      <div>
+        <div class="eyebrow">LOCAL INFERENCE</div>
+        <h2>Engineering Study Lab</h2>
+      </div>
+
+      <div class="top-status">
+        PRIVATE • ON-DEVICE • ENGINEERING
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+      <div class="hero-text">
+
+        <div class="hero-label">
+          ENGINEERING STUDY COMPANION
+        </div>
+
+        <h1>Engineering Study Lab</h1>
+
+        <p>
+          Solve engineering problems, understand formulas,
+          and learn difficult concepts with your private local AI tutor.
+        </p>
+
+        <div class="equation">
+          <span>ΣF = ma</span>
+          <span>M = Fd</span>
+          <span>σ = F/A</span>
+        </div>
+
+      </div>
+
+      <div class="hero-symbol">
+        <span>Σ</span>
+        <small>ENGINEERING</small>
+      </div>
+
     </section>
 
+
+    <!-- =========================
+         CURRENT SUBJECT
+    ========================== -->
+
+    <section class="current-subject">
+
+      <div>
+        <span class="small-label">CURRENT SUBJECT</span>
+        <strong id="currentSubject">
+          General Engineering
+        </strong>
+      </div>
+
+      <div class="subject-chip">
+        ENGINEERING
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         AI STUDY TOOLS
+    ========================== -->
+
+    <section class="quick-section">
+
+      <div class="section-heading">
+        <div>
+          <span class="small-label">AI STUDY TOOLS</span>
+          <h3>What do you want to do?</h3>
+        </div>
+      </div>
+
+      <div class="action-grid">
+
+        <button class="action-card" data-mode="Explain it">
+
+          <div class="action-icon">?</div>
+
+          <strong>Explain a Concept</strong>
+
+          <small>
+            Understand a difficult topic
+          </small>
+
+        </button>
+
+
+        <button class="action-card" data-mode="Give me an example">
+
+          <div class="action-icon">▣</div>
+
+          <strong>Engineering Example</strong>
+
+          <small>
+            See a solved example
+          </small>
+
+        </button>
+
+
+        <button class="action-card" data-mode="Solve this problem">
+
+          <div class="action-icon">∑</div>
+
+          <strong>Solve a Problem</strong>
+
+          <small>
+            Work through the solution
+          </small>
+
+        </button>
+
+
+        <button class="action-card" data-mode="Quiz me">
+
+          <div class="action-icon">✓</div>
+
+          <strong>Quiz Me</strong>
+
+          <small>
+            Test your knowledge
+          </small>
+
+        </button>
+
+
+        <button class="action-card" data-mode="Find my common mistake">
+
+          <div class="action-icon">!</div>
+
+          <strong>Find My Mistake</strong>
+
+          <small>
+            Check your approach
+          </small>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TOOLS
+    ========================== -->
+
+    <section class="tools-section">
+
+
+      <!-- TOOL 01 -->
+
+      <article class="tool-card">
+
+        <div class="tool-header">
+
+          <div>
+            <span class="small-label">TOOL 01</span>
+            <h3>Engineering Calculator</h3>
+          </div>
+
+          <div class="tool-symbol">∑</div>
+
+        </div>
+
+        <div class="calculator">
+
+          <input
+            id="calcDisplay"
+            type="text"
+            value=""
+            placeholder="0"
+            readonly
+          >
+
+          <div class="calc-grid">
+
+            <button onclick="calcInput('7')">7</button>
+            <button onclick="calcInput('8')">8</button>
+            <button onclick="calcInput('9')">9</button>
+            <button onclick="calcInput('/')">÷</button>
+
+            <button onclick="calcInput('4')">4</button>
+            <button onclick="calcInput('5')">5</button>
+            <button onclick="calcInput('6')">6</button>
+            <button onclick="calcInput('*')">×</button>
+
+            <button onclick="calcInput('1')">1</button>
+            <button onclick="calcInput('2')">2</button>
+            <button onclick="calcInput('3')">3</button>
+            <button onclick="calcInput('-')">−</button>
+
+            <button onclick="calcInput('0')">0</button>
+            <button onclick="calcInput('.')">.</button>
+            <button class="equals" onclick="calculateResult()">=</button>
+            <button onclick="calcInput('+')">+</button>
+
+            <button class="clear" onclick="clearCalculator()">
+              CLEAR
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- TOOL 02 -->
+
+      <article class="tool-card">
+
+        <div class="tool-header">
+
+          <div>
+            <span class="small-label">TOOL 02</span>
+            <h3>Unit Converter</h3>
+          </div>
+
+          <div class="tool-symbol">↔</div>
+
+        </div>
+
+        <div class="converter">
+
+          <input
+            id="convertValue"
+            type="number"
+            placeholder="Enter value"
+          >
+
+          <select id="fromUnit">
+
+            <option value="m">Meters</option>
+            <option value="cm">Centimeters</option>
+            <option value="mm">Millimeters</option>
+            <option value="km">Kilometers</option>
+            <option value="ft">Feet</option>
+            <option value="in">Inches</option>
+
+          </select>
+
+          <div class="convert-arrow">↓</div>
+
+          <select id="toUnit">
+
+            <option value="cm">Centimeters</option>
+            <option value="m">Meters</option>
+            <option value="mm">Millimeters</option>
+            <option value="km">Kilometers</option>
+            <option value="ft">Feet</option>
+            <option value="in">Inches</option>
+
+          </select>
+
+          <button onclick="convertUnits()">
+            Convert
+          </button>
+
+          <div
+            id="converterResult"
+            class="converter-result"
+          >
+            Enter a value to convert.
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- TOOL 03 -->
+
+      <article class="tool-card statics-card">
+
+        <div class="tool-header">
+
+          <div>
+
+            <span class="small-label">TOOL 03</span>
+
+            <h3>Statics Solver V2</h3>
+
+            <p class="tool-description">
+              Resolve concurrent forces into components
+              and find the resultant.
+            </p>
+
+          </div>
+
+          <div class="tool-symbol">⚖</div>
+
+        </div>
+
+
+        <div class="statics-info">
+
+          <div>
+            <strong>Angle convention</strong>
+            <span>
+              Measured counterclockwise from +x
+            </span>
+          </div>
+
+          <div>
+            <strong>Components</strong>
+            <span>
+              Fx = F cos θ &nbsp; | &nbsp;
+              Fy = F sin θ
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="force-table">
+
+          <div class="force-heading">
+            <span>FORCE</span>
+            <span>MAGNITUDE</span>
+            <span>UNIT</span>
+            <span>ANGLE</span>
+          </div>
+
+
+          <div class="force-row">
+
+            <strong>F₁</strong>
+
+            <input
+              id="f1Magnitude"
+              type="number"
+              value="100"
+              step="any"
+            >
+
+            <select id="f1Unit">
+              <option value="N">N</option>
+              <option value="kN">kN</option>
+            </select>
+
+            <input
+              id="f1Angle"
+              type="number"
+              value="30"
+              step="any"
+            >
+
+          </div>
+
+
+          <div class="force-row">
+
+            <strong>F₂</strong>
+
+            <input
+              id="f2Magnitude"
+              type="number"
+              value="150"
+              step="any"
+            >
+
+            <select id="f2Unit">
+              <option value="N">N</option>
+              <option value="kN">kN</option>
+            </select>
+
+            <input
+              id="f2Angle"
+              type="number"
+              value="60"
+              step="any"
+            >
+
+          </div>
+
+
+          <div class="force-row">
+
+            <strong>F₃</strong>
+
+            <input
+              id="f3Magnitude"
+              type="number"
+              value="0"
+              step="any"
+            >
+
+            <select id="f3Unit">
+              <option value="N">N</option>
+              <option value="kN">kN</option>
+            </select>
+
+            <input
+              id="f3Angle"
+              type="number"
+              value="0"
+              step="any"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="statics-buttons">
+
+          <button
+            class="secondary-button"
+            id="loadStaticsExample"
+          >
+            Load Example
+          </button>
+
+          <button
+            class="primary-button"
+            id="solveStaticsButton"
+          >
+            Solve Resultant
+          </button>
+
+        </div>
+
+
+        <div
+          id="staticsResult"
+          class="statics-result"
+        ></div>
+
+      </article>
+
+
+      <!-- TOOL 04 -->
+
+      <article class="tool-card problem-card">
+
+        <div class="tool-header">
+
+          <div>
+
+            <span class="small-label">TOOL 04</span>
+
+            <h3>Engineering Problem Solver</h3>
+
+            <p class="tool-description">
+              Get a structured engineering solution
+              using exact calculations and local QVAC AI.
+            </p>
+
+          </div>
+
+          <div class="tool-symbol">∑</div>
+
+        </div>
+
+
+        <textarea
+          id="engineeringProblem"
+          class="engineering-problem"
+          placeholder="Example: A 10 kg box is pushed with a net force of 50 N. Find its acceleration."
+        ></textarea>
+
+
+        <select
+          id="engineeringCategory"
+          class="engineering-category"
+        >
+
+          <option>General Engineering</option>
+          <option>Statics & Mechanics</option>
+          <option>Mathematics & Calculus</option>
+          <option>Surveying</option>
+          <option>Structural Engineering</option>
+          <option>Hydraulics</option>
+          <option>Building Utilities</option>
+          <option>Engineering Economics</option>
+
+        </select>
+
+
+        <button
+          id="solveEngineeringProblem"
+          class="primary-button full-button"
+        >
+          Solve Engineering Problem →
+        </button>
+
+
+        <div
+          id="engineeringProblemResult"
+          class="step-result hidden"
+        ></div>
+
+      </article>
+
+
+      <!-- TOOL 05 -->
+
+      <article class="tool-card fbd-card">
+
+        <div class="tool-header">
+
+          <div>
+
+            <span class="small-label">TOOL 05</span>
+
+            <h3>Free-Body Diagram Generator V2</h3>
+
+            <p class="tool-description">
+              Build a realistic free-body diagram
+              for a block on a horizontal surface.
+            </p>
+
+          </div>
+
+          <div class="tool-symbol">▣</div>
+
+        </div>
+
+
+        <div class="fbd-layout">
+
+
+          <!-- INPUTS -->
+
+          <div class="fbd-input">
+
+            <label for="fbdObject">
+              OBJECT
+            </label>
+
+            <input
+              id="fbdObject"
+              type="text"
+              value="BLOCK"
+            >
+
+
+            <label for="fbdMass">
+              MASS (kg)
+            </label>
+
+            <input
+              id="fbdMass"
+              type="number"
+              value="100"
+              min="0"
+              step="any"
+            >
+
+
+            <label for="fbdApplied">
+              APPLIED FORCE → (N)
+            </label>
+
+            <input
+              id="fbdApplied"
+              type="number"
+              value="500"
+              step="any"
+            >
+
+
+            <label for="fbdFriction">
+              FRICTION ← (N)
+            </label>
+
+            <input
+              id="fbdFriction"
+              type="number"
+              value="200"
+              min="0"
+              step="any"
+            >
+
+
+            <div class="surface-note">
+
+              <strong>HORIZONTAL SURFACE</strong>
+
+              <span>
+                Weight and normal force are calculated automatically.
+              </span>
+
+              <code>W = mg</code>
+              <code>N = W</code>
+
+            </div>
+
+
+            <button
+              id="generateFbd"
+              class="primary-button"
+            >
+              Generate FBD →
+            </button>
+
+          </div>
+
+
+          <!-- DISPLAY -->
+
+          <div class="fbd-display">
+
+            <div class="fbd-title">
+              FREE-BODY DIAGRAM
+            </div>
+
+
+            <div class="diagram">
+
+              <div
+                id="fbdUp"
+                class="fbd-force vertical-force up-force"
+              >
+                <span class="arrow-symbol">↑</span>
+                <span id="normalLabel">N = 981.00 N</span>
+              </div>
+
+
+              <div class="block-area">
+
+                <div
+                  id="fbdLeft"
+                  class="fbd-force horizontal-force left-force"
+                >
+                  <span id="frictionLabel">200.00 N</span>
+                  <span class="arrow-symbol">←</span>
+                </div>
+
+
+                <div
+                  id="fbdBlock"
+                  class="fbd-block"
+                >
+                  BLOCK
+                </div>
+
+
+                <div
+                  id="fbdRight"
+                  class="fbd-force horizontal-force right-force"
+                >
+                  <span class="arrow-symbol">→</span>
+                  <span id="appliedLabel">500.00 N</span>
+                </div>
+
+              </div>
+
+
+              <div
+                id="fbdDown"
+                class="fbd-force vertical-force down-force"
+              >
+                <span id="weightLabel">W = 981.00 N</span>
+                <span class="arrow-symbol">↓</span>
+              </div>
+
+            </div>
+
+
+            <div
+              id="fbdCalculation"
+              class="fbd-calculation"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="fbdResult"
+          class="step-result hidden"
+        ></div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =========================
+         FORMULA TOOLBOX
+    ========================== -->
+
+    <section class="formula-section">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="small-label">REFERENCE</span>
+          <h3>Engineering Formula Toolbox</h3>
+        </div>
+
+      </div>
+
+
+      <div class="formula-grid">
+
+        <div class="formula-card">
+
+          <span>NEWTON'S 2ND LAW</span>
+
+          <strong>F = ma</strong>
+
+          <small>
+            Force • Mass • Acceleration
+          </small>
+
+        </div>
+
+
+        <div class="formula-card">
+
+          <span>MOMENT</span>
+
+          <strong>M = Fd</strong>
+
+          <small>
+            Moment • Force • Distance
+          </small>
+
+        </div>
+
+
+        <div class="formula-card">
+
+          <span>NORMAL STRESS</span>
+
+          <strong>σ = F/A</strong>
+
+          <small>
+            Force divided by area
+          </small>
+
+        </div>
+
+
+        <div class="formula-card">
+
+          <span>DENSITY</span>
+
+          <strong>ρ = m/V</strong>
+
+          <small>
+            Mass divided by volume
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         LOCAL AI
+    ========================== -->
+
+    <section class="ai-section">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="small-label">LOCAL AI TUTOR</span>
+          <h3>Ask KairoNote</h3>
+        </div>
+
+        <span class="qvac-badge">
+          ● QVAC LOCAL
+        </span>
+
+      </div>
+
+
+      <div class="question-box">
+
+        <textarea
+          id="question"
+          maxlength="1200"
+          placeholder="Ask an engineering question, paste a problem, or ask me to explain a concept..."
+        ></textarea>
+
+
+        <div class="question-footer">
+
+          <span id="charCount">
+            0 / 1200
+          </span>
+
+
+          <div class="ask-controls">
+
+            <select id="mode">
+
+              <option value="Explain it">
+                Explain it
+              </option>
+
+              <option value="Give me an example">
+                Give me an example
+              </option>
+
+              <option value="Solve this problem">
+                Solve this problem
+              </option>
+
+              <option value="Quiz me">
+                Quiz me
+              </option>
+
+              <option value="Find my common mistake">
+                Find my common mistake
+              </option>
+
+            </select>
+
+
+            <button
+              id="askButton"
+              class="primary-button"
+            >
+              Ask KairoNote →
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="answer"
+        class="answer-box"
+      >
+
+        <div class="empty-answer">
+
+          <span>Σ</span>
+
+          <p>
+            Your local AI solution will appear here.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
-      No API key • No cloud AI call • Your question stays on this machine.
+
+      <span>
+        KairoNote Engineering Study Lab
+      </span>
+
+      <span>
+        Powered by Tether QVAC • On-device inference
+      </span>
+
     </footer>
+
   </main>
 
-  <script>
-    const question = document.getElementById("question");
-    const mode = document.getElementById("mode");
-    const ask = document.getElementById("ask");
-    const output = document.getElementById("output");
-    const status = document.getElementById("status");
+</div>
 
-    ask.addEventListener("click", async () => {
-      const text = question.value.trim();
 
-      if (!text) {
-        output.textContent = "Please enter a study question first.";
-        return;
-      }
+<script>
 
-      ask.disabled = true;
-      status.textContent = "Thinking locally with QVAC...";
-      output.textContent = "";
+/* =========================================================
+   SUBJECT SELECTION
+========================================================= */
 
-      try {
-        const response = await fetch("/api/ask", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            question: text,
-            mode: mode.value
-          })
-        });
+const subjectButtons =
+  document.querySelectorAll(".subject");
 
-        const data = await response.json();
+const currentSubject =
+  document.getElementById("currentSubject");
 
-        if (!response.ok) {
-          throw new Error(data.error || "Something went wrong.");
-        }
+let selectedSubject = "General Engineering";
 
-        output.textContent = data.result;
-        status.textContent = "Done — generated locally with QVAC.";
-      } catch (error) {
-        output.textContent = error.message;
-        status.textContent = "Error";
-      } finally {
-        ask.disabled = false;
-      }
+subjectButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    subjectButtons.forEach(item =>
+      item.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    selectedSubject =
+      button.dataset.subject;
+
+    currentSubject.textContent =
+      selectedSubject;
+
+  });
+
+});
+
+
+/* =========================================================
+   QUICK AI ACTIONS
+========================================================= */
+
+const actionCards =
+  document.querySelectorAll(".action-card");
+
+const modeSelect =
+  document.getElementById("mode");
+
+const questionInput =
+  document.getElementById("question");
+
+actionCards.forEach(card => {
+
+  card.addEventListener("click", () => {
+
+    const mode =
+      card.dataset.mode;
+
+    modeSelect.value = mode;
+
+    questionInput.focus();
+
+  });
+
+});
+
+
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+const calcDisplay =
+  document.getElementById("calcDisplay");
+
+
+function calcInput(value) {
+
+  calcDisplay.value += value;
+
+}
+
+
+function clearCalculator() {
+
+  calcDisplay.value = "";
+
+}
+
+
+function calculateResult() {
+
+  try {
+
+    if (!calcDisplay.value.trim()) {
+      return;
+    }
+
+    const expression =
+      calcDisplay.value.replace(/[^0-9+\-*/.()]/g, "");
+
+    if (!expression) {
+      return;
+    }
+
+    const result =
+      Function(
+        `"use strict"; return (${expression})`
+      )();
+
+    if (!Number.isFinite(result)) {
+      throw new Error("Invalid calculation");
+    }
+
+    calcDisplay.value =
+      Number(result.toFixed(10));
+
+  } catch {
+
+    calcDisplay.value =
+      "Error";
+
+  }
+
+}
+
+
+/* =========================================================
+   UNIT CONVERTER
+========================================================= */
+
+const unitFactors = {
+
+  m: 1,
+
+  cm: 0.01,
+
+  mm: 0.001,
+
+  km: 1000,
+
+  ft: 0.3048,
+
+  in: 0.0254
+
+};
+
+
+const unitNames = {
+
+  m: "meters",
+
+  cm: "centimeters",
+
+  mm: "millimeters",
+
+  km: "kilometers",
+
+  ft: "feet",
+
+  in: "inches"
+
+};
+
+
+function convertUnits() {
+
+  const value =
+    Number(
+      document.getElementById("convertValue").value
+    );
+
+  const from =
+    document.getElementById("fromUnit").value;
+
+  const to =
+    document.getElementById("toUnit").value;
+
+  const output =
+    document.getElementById("converterResult");
+
+
+  if (!Number.isFinite(value)) {
+
+    output.textContent =
+      "Enter a valid value to convert.";
+
+    return;
+
+  }
+
+
+  const meters =
+    value * unitFactors[from];
+
+  const result =
+    meters / unitFactors[to];
+
+
+  output.innerHTML =
+    `<strong>${value}</strong> ${unitNames[from]} = ` +
+    `<strong>${Number(result.toFixed(8))}</strong> ` +
+    `${unitNames[to]}`;
+
+}
+
+
+/* =========================================================
+   STATICS SOLVER V2
+========================================================= */
+
+const solveStaticsButton =
+  document.getElementById("solveStaticsButton");
+
+const loadStaticsExample =
+  document.getElementById("loadStaticsExample");
+
+const staticsResult =
+  document.getElementById("staticsResult");
+
+
+function getForceData(index) {
+
+  const magnitude =
+    Number(
+      document.getElementById(
+        `f${index}Magnitude`
+      ).value
+    ) || 0;
+
+
+  const angle =
+    Number(
+      document.getElementById(
+        `f${index}Angle`
+      ).value
+    ) || 0;
+
+
+  const unit =
+    document.getElementById(
+      `f${index}Unit`
+    ).value;
+
+
+  const multiplier =
+    unit === "kN" ? 1000 : 1;
+
+
+  return {
+
+    magnitude:
+      magnitude * multiplier,
+
+    angle,
+
+    displayMagnitude:
+      magnitude,
+
+    unit
+
+  };
+
+}
+
+
+function formatNumber(value, digits = 2) {
+
+  return Number(
+    value.toFixed(digits)
+  ).toLocaleString(
+    "en-US",
+    {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits
+    }
+  );
+
+}
+
+
+function calculateStatics() {
+
+  const forces = [
+    getForceData(1),
+    getForceData(2),
+    getForceData(3)
+  ];
+
+
+  let sumFx = 0;
+  let sumFy = 0;
+
+
+  const components =
+    forces.map((force, index) => {
+
+      const radians =
+        force.angle *
+        Math.PI /
+        180;
+
+
+      const fx =
+        force.magnitude *
+        Math.cos(radians);
+
+
+      const fy =
+        force.magnitude *
+        Math.sin(radians);
+
+
+      sumFx += fx;
+      sumFy += fy;
+
+
+      return {
+
+        ...force,
+
+        number: index + 1,
+
+        fx,
+
+        fy
+
+      };
+
     });
-  </script>
+
+
+  const resultant =
+    Math.sqrt(
+      sumFx ** 2 +
+      sumFy ** 2
+    );
+
+
+  let direction =
+    Math.atan2(
+      sumFy,
+      sumFx
+    ) *
+    180 /
+    Math.PI;
+
+
+  if (direction < 0) {
+    direction += 360;
+  }
+
+
+  let quadrant = "Axis";
+
+
+  if (sumFx > 0 && sumFy > 0) {
+    quadrant = "Quadrant I";
+  }
+
+  else if (sumFx < 0 && sumFy > 0) {
+    quadrant = "Quadrant II";
+  }
+
+  else if (sumFx < 0 && sumFy < 0) {
+    quadrant = "Quadrant III";
+  }
+
+  else if (sumFx > 0 && sumFy < 0) {
+    quadrant = "Quadrant IV";
+  }
+
+
+  staticsResult.innerHTML = `
+
+    <div class="result-title">
+      <span>STEP-BY-STEP SOLUTION</span>
+      <strong>RESULTANT FORCE</strong>
+    </div>
+
+
+    <div class="solution-step">
+
+      <div class="step-number">01</div>
+
+      <div class="step-content">
+
+        <h4>Given</h4>
+
+        <div class="solution-box">
+
+          ${components.map(force => `
+
+            <div>
+              <strong>F${force.number}</strong>
+              =
+              ${formatNumber(force.displayMagnitude)}
+              ${force.unit},
+              θ =
+              ${formatNumber(force.angle)}°
+            </div>
+
+          `).join("")}
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="solution-step">
+
+      <div class="step-number">02</div>
+
+      <div class="step-content">
+
+        <h4>Force Components</h4>
+
+        <div class="solution-box">
+
+          ${components.map(force => `
+
+            <div class="component-block">
+
+              <strong>F${force.number}</strong>
+
+              <div>
+                Fx =
+                ${formatNumber(force.magnitude)}
+                cos(${formatNumber(force.angle)}°)
+                =
+                ${force.fx >= 0 ? "+" : ""}
+                ${formatNumber(force.fx)}
+                N
+              </div>
+
+              <div>
+                Fy =
+                ${formatNumber(force.magnitude)}
+                sin(${formatNumber(force.angle)}°)
+                =
+                ${force.fy >= 0 ? "+" : ""}
+                ${formatNumber(force.fy)}
+                N
+              </div>
+
+            </div>
+
+          `).join("")}
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="solution-step">
+
+      <div class="step-number">03</div>
+
+      <div class="step-content">
+
+        <h4>Summation of Components</h4>
+
+        <div class="solution-box formula-box">
+
+          <div>
+            ΣFx =
+            <strong>
+              ${sumFx >= 0 ? "+" : ""}
+              ${formatNumber(sumFx)} N
+            </strong>
+          </div>
+
+          <div>
+            ΣFy =
+            <strong>
+              ${sumFy >= 0 ? "+" : ""}
+              ${formatNumber(sumFy)} N
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="solution-step">
+
+      <div class="step-number">04</div>
+
+      <div class="step-content">
+
+        <h4>Resultant Magnitude</h4>
+
+        <div class="solution-box formula-box">
+
+          <div>
+            R = √[(ΣFx)² + (ΣFy)²]
+          </div>
+
+          <div>
+            R =
+            <strong>
+              ${formatNumber(resultant)} N
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="solution-step">
+
+      <div class="step-number">05</div>
+
+      <div class="step-content">
+
+        <h4>Direction</h4>
+
+        <div class="solution-box formula-box">
+
+          <div>
+            θ = atan2(ΣFy, ΣFx)
+          </div>
+
+          <div>
+            θ =
+            <strong>
+              ${formatNumber(direction)}°
+            </strong>
+          </div>
+
+          <div class="quadrant-note">
+            ${quadrant}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="final-answer">
+
+      <span>FINAL ANSWER</span>
+
+      <strong>
+        R = ${formatNumber(resultant)} N
+      </strong>
+
+      <small>
+        Direction = ${formatNumber(direction)}°
+        counterclockwise from +x
+        (${quadrant})
+      </small>
+
+    </div>
+
+  `;
+
+}
+
+
+loadStaticsExample.addEventListener(
+  "click",
+  () => {
+
+    document.getElementById(
+      "f1Magnitude"
+    ).value = 100;
+
+    document.getElementById(
+      "f1Unit"
+    ).value = "N";
+
+    document.getElementById(
+      "f1Angle"
+    ).value = 30;
+
+
+    document.getElementById(
+      "f2Magnitude"
+    ).value = 150;
+
+    document.getElementById(
+      "f2Unit"
+    ).value = "N";
+
+    document.getElementById(
+      "f2Angle"
+    ).value = 60;
+
+
+    document.getElementById(
+      "f3Magnitude"
+    ).value = 0;
+
+    document.getElementById(
+      "f3Unit"
+    ).value = "N";
+
+    document.getElementById(
+      "f3Angle"
+    ).value = 0;
+
+
+    calculateStatics();
+
+  }
+);
+
+
+solveStaticsButton.addEventListener(
+  "click",
+  calculateStatics
+);
+
+
+/* =========================================================
+   ENGINEERING PROBLEM SOLVER
+========================================================= */
+
+const solveEngineeringProblem =
+  document.getElementById(
+    "solveEngineeringProblem"
+  );
+
+const engineeringProblem =
+  document.getElementById(
+    "engineeringProblem"
+  );
+
+const engineeringProblemResult =
+  document.getElementById(
+    "engineeringProblemResult"
+  );
+
+const engineeringCategory =
+  document.getElementById(
+    "engineeringCategory"
+  );
+
+
+function extractMass(text) {
+
+  const match =
+    text.match(
+      /(\d+(?:\.\d+)?)\s*(?:kg|kilograms?)\b/i
+    );
+
+  return match
+    ? Number(match[1])
+    : null;
+
+}
+
+
+function extractForce(text) {
+
+  const patterns = [
+
+    /net\s+force\s*(?:of|=)?\s*(\d+(?:\.\d+)?)\s*N/i,
+
+    /force\s*(?:of|=)?\s*(\d+(?:\.\d+)?)\s*N/i,
+
+    /(\d+(?:\.\d+)?)\s*N/i
+
+  ];
+
+
+  for (const pattern of patterns) {
+
+    const match =
+      text.match(pattern);
+
+    if (match) {
+      return Number(match[1]);
+    }
+
+  }
+
+  return null;
+
+}
+
+
+function solveNewtonProblem(text) {
+
+  const lower =
+    text.toLowerCase();
+
+
+  const looksLikeNewton =
+    lower.includes("acceleration") &&
+    (
+      lower.includes("force") ||
+      lower.includes("newton") ||
+      lower.includes("f = ma")
+    );
+
+
+  if (!looksLikeNewton) {
+    return null;
+  }
+
+
+  const mass =
+    extractMass(text);
+
+  const force =
+    extractForce(text);
+
+
+  if (
+    mass === null ||
+    force === null ||
+    mass <= 0
+  ) {
+    return null;
+  }
+
+
+  return {
+
+    mass,
+
+    force,
+
+    acceleration:
+      force / mass
+
+  };
+
+}
+
+
+function buildNewtonSolution(solution) {
+
+  return `
+
+    <div class="result-title">
+      ENGINEERING SOLUTION
+    </div>
+
+
+    <div class="solution-step">
+
+      <div class="step-number">01</div>
+
+      <div>
+
+        <h4>Given</h4>
+
+        <div class="solution-box">
+
+          <p>
+            Mass, m =
+            <strong>
+              ${formatNumber(solution.mass)} kg
+            </strong>
+          </p>
+
+          <p>
+            Net Force, F =
+            <strong>
+              ${formatNumber(solution.force)} N
+            </strong>
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="solution-step">
+
+      <div class="step-number">02</div>
+
+      <div>
+
+        <h4>Find</h4>
+
+        <div class="solution-box">
+          Acceleration, a
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="solution-step">
+
+      <div class="step-number">03</div>
+
+      <div>
+
+        <h4>Formula</h4>
+
+        <div class="solution-box formula-box">
+
+          F = ma
+
+          <br>
+
+          a = F / m
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="solution-step">
+
+      <div class="step-number">04</div>
+
+      <div>
+
+        <h4>Solution</h4>
+
+        <div class="solution-box formula-box">
+
+          a =
+          ${formatNumber(solution.force)} N /
+          ${formatNumber(solution.mass)} kg
+
+          <br>
+
+          a =
+          <strong>
+            ${formatNumber(solution.acceleration)}
+            m/s²
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="final-answer">
+
+      <small>FINAL ANSWER</small>
+
+      <strong>
+        a = ${formatNumber(solution.acceleration)} m/s²
+      </strong>
+
+      <span>
+        Net horizontal force =
+        ${formatNumber(solution.force)} N
+      </span>
+
+    </div>
+
+  `;
+
+}
+
+
+async function explainExactResult(
+  problem,
+  solution
+) {
+
+  const prompt = `
+
+The exact engineering calculation has already been completed.
+
+Student problem:
+${problem}
+
+Exact result:
+Mass = ${solution.mass} kg
+Net force = ${solution.force} N
+Acceleration = ${solution.acceleration} m/s²
+
+Explain this result briefly like a college engineering tutor.
+
+IMPORTANT:
+- Do not change any numerical values.
+- Do not recalculate to a different answer.
+- Do not invent additional values.
+- Keep the explanation concise.
+- Explain why F = ma gives this acceleration.
+
+  `;
+
+
+  try {
+
+    const response =
+      await fetch("/api/ask", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type":
+            "application/json"
+        },
+
+        body: JSON.stringify({
+
+          question:
+            prompt,
+
+          mode:
+            "Explain it"
+
+        })
+
+      });
+
+
+    const data =
+      await response.json();
+
+
+    return (
+      data.answer ||
+      data.result ||
+      data.response ||
+      data.text ||
+      data.message ||
+      ""
+    );
+
+  } catch {
+
+    return "";
+
+  }
+
+}
+
+
+solveEngineeringProblem.addEventListener(
+  "click",
+  async () => {
+
+    const problem =
+      engineeringProblem.value.trim();
+
+
+    if (!problem) {
+
+      engineeringProblemResult.classList.remove(
+        "hidden"
+      );
+
+      engineeringProblemResult.innerHTML = `
+
+        <div class="error-box">
+          Enter an engineering problem first.
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    const exact =
+      solveNewtonProblem(problem);
+
+
+    engineeringProblemResult.classList.remove(
+      "hidden"
+    );
+
+
+    if (!exact) {
+
+      engineeringProblemResult.innerHTML = `
+
+        <div class="result-title">
+          ENGINEERING PROBLEM SOLVER
+        </div>
+
+        <div class="solution-step">
+
+          <div class="step-number">!</div>
+
+          <div>
+
+            <h4>Problem Type Not Yet Supported</h4>
+
+            <div class="solution-box">
+
+              This exact calculator currently supports
+              Newton's Second Law problems involving
+              mass, force, and acceleration.
+
+              <br><br>
+
+              You can use the
+              <strong>Local AI Tutor</strong>
+              below for other engineering problems.
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    engineeringProblemResult.innerHTML =
+      buildNewtonSolution(exact);
+
+
+    const aiExplanation =
+      await explainExactResult(
+        problem,
+        exact
+      );
+
+
+    if (aiExplanation) {
+
+      engineeringProblemResult.innerHTML += `
+
+        <div class="ai-explanation">
+
+          <div class="ai-explanation-title">
+            QVAC LOCAL EXPLANATION
+          </div>
+
+          <div>
+            ${escapeHtml(aiExplanation)}
+          </div>
+
+        </div>
+
+      `;
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   FREE-BODY DIAGRAM V2
+========================================================= */
+
+const generateFbd =
+  document.getElementById(
+    "generateFbd"
+  );
+
+
+function updateFbd() {
+
+  const object =
+    document.getElementById(
+      "fbdObject"
+    ).value.trim() ||
+    "BLOCK";
+
+
+  const mass =
+    Number(
+      document.getElementById(
+        "fbdMass"
+      ).value
+    ) || 0;
+
+
+  const applied =
+    Number(
+      document.getElementById(
+        "fbdApplied"
+      ).value
+    ) || 0;
+
+
+  const friction =
+    Number(
+      document.getElementById(
+        "fbdFriction"
+      ).value
+    ) || 0;
+
+
+  if (mass < 0) {
+
+    document.getElementById(
+      "fbdCalculation"
+    ).innerHTML = `
+      <div class="error-box">
+        Mass cannot be negative.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  const g = 9.81;
+
+  const weight =
+    mass * g;
+
+  const normal =
+    weight;
+
+  const sumFx =
+    applied - friction;
+
+  const sumFy =
+    normal - weight;
+
+  const resultant =
+    Math.sqrt(
+      sumFx ** 2 +
+      sumFy ** 2
+    );
+
+
+  const acceleration =
+    mass > 0
+      ? sumFx / mass
+      : 0;
+
+
+  document.getElementById(
+    "fbdBlock"
+  ).textContent =
+    object;
+
+
+  document.getElementById(
+    "appliedLabel"
+  ).textContent =
+    `${formatNumber(applied)} N`;
+
+
+  document.getElementById(
+    "frictionLabel"
+  ).textContent =
+    `${formatNumber(friction)} N`;
+
+
+  document.getElementById(
+    "normalLabel"
+  ).textContent =
+    `N = ${formatNumber(normal)} N`;
+
+
+  document.getElementById(
+    "weightLabel"
+  ).textContent =
+    `W = ${formatNumber(weight)} N`;
+
+
+  document.getElementById(
+    "fbdCalculation"
+  ).innerHTML = `
+
+    <div class="calculation-section">
+
+      <strong>WEIGHT</strong>
+
+      <p>
+        W = mg
+      </p>
+
+      <p>
+        W =
+        ${formatNumber(mass)}
+        × 9.81
+      </p>
+
+      <p>
+        W =
+        <strong>
+          ${formatNumber(weight)} N
+        </strong>
+      </p>
+
+    </div>
+
+
+    <div class="calculation-section">
+
+      <strong>NORMAL FORCE</strong>
+
+      <p>
+        ΣFy = N − W = 0
+      </p>
+
+      <p>
+        N = W
+      </p>
+
+      <p>
+        N =
+        <strong>
+          ${formatNumber(normal)} N
+        </strong>
+      </p>
+
+    </div>
+
+
+    <div class="calculation-section">
+
+      <strong>HORIZONTAL FORCES</strong>
+
+      <p>
+        ΣFx = Applied Force − Friction
+      </p>
+
+      <p>
+        ΣFx =
+        ${formatNumber(applied)}
+        −
+        ${formatNumber(friction)}
+      </p>
+
+      <p>
+        ΣFx =
+        <strong>
+          ${formatNumber(sumFx)} N
+        </strong>
+      </p>
+
+    </div>
+
+
+    <div class="calculation-section">
+
+      <strong>VERTICAL FORCES</strong>
+
+      <p>
+        ΣFy = N − W
+      </p>
+
+      <p>
+        ΣFy =
+        ${formatNumber(normal)}
+        −
+        ${formatNumber(weight)}
+      </p>
+
+      <p>
+        ΣFy =
+        <strong>
+          ${formatNumber(sumFy)} N
+        </strong>
+      </p>
+
+    </div>
+
+
+    <div class="calculation-section">
+
+      <strong>RESULTANT FORCE</strong>
+
+      <p>
+        R = √[(ΣFx)² + (ΣFy)²]
+      </p>
+
+      <p>
+        R =
+        <strong>
+          ${formatNumber(resultant)} N
+        </strong>
+      </p>
+
+    </div>
+
+
+    <div class="calculation-section">
+
+      <strong>ACCELERATION</strong>
+
+      <p>
+        ΣF = ma
+      </p>
+
+      <p>
+        a = ΣFx / m
+      </p>
+
+      <p>
+        a =
+        ${formatNumber(sumFx)}
+        /
+        ${formatNumber(mass)}
+      </p>
+
+      <p>
+        a =
+        <strong>
+          ${formatNumber(acceleration)} m/s²
+        </strong>
+      </p>
+
+    </div>
+
+  `;
+
+
+  document.getElementById(
+    "fbdResult"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "fbdResult"
+  ).innerHTML = `
+
+    <div class="result-title">
+      FINAL FBD ANALYSIS
+    </div>
+
+    <div class="final-answer">
+
+      <small>FINAL ANSWER</small>
+
+      <strong>
+        a = ${formatNumber(acceleration)} m/s²
+      </strong>
+
+      <span>
+        Net horizontal force =
+        ${formatNumber(sumFx)} N
+      </span>
+
+    </div>
+
+  `;
+
+}
+
+
+generateFbd.addEventListener(
+  "click",
+  updateFbd
+);
+
+
+/* =========================================================
+   LOCAL AI TUTOR
+========================================================= */
+
+const askButton =
+  document.getElementById(
+    "askButton"
+  );
+
+const answerBox =
+  document.getElementById(
+    "answer"
+  );
+
+const charCount =
+  document.getElementById(
+    "charCount"
+  );
+
+
+questionInput.addEventListener(
+  "input",
+  () => {
+
+    charCount.textContent =
+      `${questionInput.value.length} / 1200`;
+
+  }
+);
+
+
+function escapeHtml(text) {
+
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+function formatAiText(text) {
+
+  return escapeHtml(text)
+    .replace(/\n\n+/g, "<br><br>")
+    .replace(/\n/g, "<br>");
+
+}
+
+
+async function askKairoNote() {
+
+  const question =
+    questionInput.value.trim();
+
+  const mode =
+    modeSelect.value;
+
+
+  if (!question) {
+
+    answerBox.innerHTML = `
+
+      <div class="error-message">
+
+        <strong>
+          Enter a question first.
+        </strong>
+
+        <p>
+          Ask KairoNote an engineering question
+          or paste a problem to solve.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  askButton.disabled = true;
+
+  askButton.textContent =
+    "Thinking...";
+
+
+  answerBox.innerHTML = `
+
+    <div class="loading-answer">
+
+      <div class="loading-symbol">
+        Σ
+      </div>
+
+      <p>
+        QVAC is running locally...
+      </p>
+
+    </div>
+
+  `;
+
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/ask",
+        {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body: JSON.stringify({
+
+            question:
+              `Subject: ${selectedSubject}
+
+Student question:
+${question}`,
+
+            mode
+
+          })
+
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.error ||
+        "Request failed."
+      );
+
+    }
+
+
+    const result =
+      data.result ||
+      data.answer ||
+      data.response ||
+      data.text ||
+      data.message ||
+      "No response received.";
+
+
+    answerBox.innerHTML = `
+
+      <div class="answer-content">
+
+        <div class="answer-label">
+          QVAC LOCAL • ${selectedSubject}
+        </div>
+
+        <div class="answer-text">
+          ${formatAiText(result)}
+        </div>
+
+      </div>
+
+    `;
+
+  } catch (error) {
+
+    answerBox.innerHTML = `
+
+      <div class="error-message">
+
+        <strong>
+          Something went wrong.
+        </strong>
+
+        <p>
+          ${escapeHtml(
+            error.message ||
+            "Unable to get a response."
+          )}
+        </p>
+
+      </div>
+
+    `;
+
+  } finally {
+
+    askButton.disabled = false;
+
+    askButton.textContent =
+      "Ask KairoNote →";
+
+  }
+
+}
+
+
+askButton.addEventListener(
+  "click",
+  askKairoNote
+);
+
+
+/* =========================================================
+   KEYBOARD SHORTCUT
+========================================================= */
+
+questionInput.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      (event.ctrlKey || event.metaKey) &&
+      event.key === "Enter"
+    ) {
+
+      event.preventDefault();
+
+      askKairoNote();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+calculateStatics();
+updateFbd();
+
+</script>
+
 </body>
 </html>
