@@ -51,7 +51,9 @@ async function loadLocalModel() {
   });
 
   console.log("QVAC model ready.");
-  console.log("Inference stays on this machine.");
+  console.log(
+    "KairoNote is ready — inference stays on this machine."
+  );
 }
 
 async function answer(question, mode) {
@@ -101,7 +103,6 @@ IMPORTANT:
 
 const server = http.createServer(async (req, res) => {
   try {
-    // AI request
     if (req.method === "POST" && req.url === "/api/ask") {
       const { question, mode = "explain" } = await readBody(req);
 
@@ -121,7 +122,6 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
-    // Serve website files
     if (req.method === "GET") {
       const requested =
         req.url === "/" ? "/index.html" : req.url;
@@ -164,7 +164,6 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-// Cleanly unload QVAC when the app stops
 process.on("SIGINT", async () => {
   console.log("\nStopping KairoNote...");
 
@@ -175,9 +174,10 @@ process.on("SIGINT", async () => {
   process.exit(0);
 });
 
-// Load QVAC first, then start the website
 await loadLocalModel();
 
 server.listen(PORT, () => {
-  console.log(`KairoNote running at http://localhost:${PORT}`);
+  console.log(
+    `KairoNote running at http://localhost:${PORT}`
+  );
 });
