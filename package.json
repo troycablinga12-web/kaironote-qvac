@@ -1,13 +1,24 @@
 {
   "name": "kaironote-qvac",
   "version": "1.0.0",
-  "private": true,
+  "description": "KairoNote - Private AI Engineering Study Companion powered by Tether QVAC",
   "type": "module",
-  "description": "KairoNote - a private on-device AI study companion powered by Tether QVAC.",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "cli": "node cli.js"
   },
+  "keywords": [
+    "qvac",
+    "ai",
+    "engineering",
+    "civil-engineering",
+    "study",
+    "local-ai"
+  ],
+  "author": "KairoNote",
+  "license": "MIT",
   "dependencies": {
-    "@qvac/sdk": "0.19.1"
+    "@qvac/sdk": "^0.19.1"
   }
 }
