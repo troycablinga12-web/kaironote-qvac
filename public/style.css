@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2937;
+}
+
+.container {
+  width: min(900px, 92%);
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+h1 {
+  margin: 18px 0 10px;
+  font-size: 48px;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  line-height: 1.6;
+  color: #667085;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 130px;
+  padding: 15px;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  font: inherit;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: #667085;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+select,
+button {
+  padding: 13px 16px;
+  border-radius: 10px;
+  font: inherit;
+}
+
+select {
+  flex: 1;
+  border: 1px solid #d0d5dd;
+  background: white;
+}
+
+button {
+  border: none;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#status {
+  margin-top: 15px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.output {
+  margin-top: 28px;
+}
+
+.output h2 {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #667085;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 18px;
+  line-height: 1.6;
+  min-height: 100px;
+  font-family: Arial, sans-serif;
+}
+
+footer {
+  text-align: center;
+  margin-top: 25px;
+  color: #98a2b3;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  button,
+  select {
+    width: 100%;
+  }
+}

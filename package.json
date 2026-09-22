@@ -1,0 +1,13 @@
+{
+  "name": "kaironote-qvac",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "KairoNote - a private on-device AI study companion powered by Tether QVAC.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@qvac/sdk": "0.19.1"
+  }
+}

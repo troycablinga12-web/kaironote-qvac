@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KairoNote — Private AI Study Companion</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <span class="badge">● 100% local inference</span>
+      <h1>KairoNote</h1>
+      <p>
+        A private AI study companion for quick explanations, examples,
+        quizzes, and common mistakes — powered by QVAC on your own machine.
+      </p>
+    </section>
+
+    <section class="card">
+      <label for="question">What are you studying?</label>
+
+      <textarea
+        id="question"
+        rows="5"
+        placeholder="Example: Explain Newton's Second Law in simple words."
+      ></textarea>
+
+      <div class="controls">
+        <select id="mode">
+          <option value="explain">Explain it</option>
+          <option value="example">Give me an example</option>
+          <option value="quiz">Quiz me</option>
+          <option value="mistake">Find my common mistake</option>
+        </select>
+
+        <button id="ask">Ask KairoNote</button>
+      </div>
+
+      <div id="status"></div>
+
+      <section class="output">
+        <h2>AI OUTPUT</h2>
+        <pre id="output">Your local AI answer will appear here.</pre>
+      </section>
+    </section>
+
+    <footer>
+      No API key • No cloud AI call • Your question stays on this machine.
+    </footer>
+  </main>
+
+  <script>
+    const question = document.getElementById("question");
+    const mode = document.getElementById("mode");
+    const ask = document.getElementById("ask");
+    const output = document.getElementById("output");
+    const status = document.getElementById("status");
+
+    ask.addEventListener("click", async () => {
+      const text = question.value.trim();
+
+      if (!text) {
+        output.textContent = "Please enter a study question first.";
+        return;
+      }
+
+      ask.disabled = true;
+      status.textContent = "Thinking locally with QVAC...";
+      output.textContent = "";
+
+      try {
+        const response = await fetch("/api/ask", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            question: text,
+            mode: mode.value
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Something went wrong.");
+        }
+
+        output.textContent = data.result;
+        status.textContent = "Done — generated locally with QVAC.";
+      } catch (error) {
+        output.textContent = error.message;
+        status.textContent = "Error";
+      } finally {
+        ask.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
